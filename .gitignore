@@ -1,0 +1,31 @@
+# ===================================
+# Maven Build (backend-automation)
+# ===================================
+backend-automation/target/
+
+# ===================================
+# IDE - VS Code
+# ===================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ===================================
+# Operating System - macOS
+# ===================================
+.DS_Store
+
+# ===================================
+# Logs
+# ===================================
+*.log
+jmeter.log
+performance-tests/jmeter.log
+
+# ===================================
+# JMeter Performance Tests
+# ===================================
+performance-tests/results/*.jtl
+performance-tests/reports/
+

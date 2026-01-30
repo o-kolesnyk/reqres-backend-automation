@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "type": "java",
+      "name": "Debug Cucumber Tests",
+      "request": "launch",
+      "mainClass": "org.junit.platform.console.ConsoleLauncher",
+      "projectName": "reqres-backend-automation",
+      "args": [
+        "--class-path",
+        "${workspaceFolder}/backend-automation/target/test-classes:${workspaceFolder}/backend-automation/target/classes",
+        "--select-class",
+        "com.reqres.runners.RunCucumberTest"
+      ],
+      "vmArgs": [
+        "-Dfile.encoding=UTF-8"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "justMyCode": false
+    },
+    {
+      "type": "java",
+      "name": "Run Cucumber Tests",
+      "request": "launch",
+      "mainClass": "org.junit.platform.console.ConsoleLauncher",
+      "projectName": "reqres-backend-automation",
+      "args": [
+        "--class-path",
+        "${workspaceFolder}/backend-automation/target/test-classes:${workspaceFolder}/backend-automation/target/classes",
+        "--select-class",
+        "com.reqres.runners.RunCucumberTest"
+      ],
+      "vmArgs": [
+        "-Dfile.encoding=UTF-8"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "noDebug": true
+    }
+  ]
+}
