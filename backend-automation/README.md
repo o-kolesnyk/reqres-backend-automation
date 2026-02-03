@@ -35,8 +35,9 @@ backend-automation/
 │       │           ├── UserRetrievalSteps.java
 │       │           └── UserValidationSteps.java
 │       └── resources/
-│           └── features/
-│               └── reqres_users.feature   # Gherkin scenarios (GET/CREATE user)
+│           ├── features/
+│           │   └── reqres_users.feature   # Gherkin scenarios (GET/CREATE user)
+│           └── junit-platform.properties  # JUnit Platform parallel execution config
 └── target/
     └── cucumber/                          # Reports (after mvn test)
         ├── cucumber.html
@@ -64,13 +65,26 @@ cd backend-automation
 mvn test
 ```
 
-To run in parallel (multiple JVM forks):
+### Parallel execution
 
-```bash
-mvn test -Pparallel
+Tests run in parallel by default using **JUnit Platform parallel execution**. Scenarios execute concurrently within a single JVM, which is more efficient than Maven Surefire forks for Cucumber tests.
+
+**Configuration:**
+- Parallel execution is configured in `src/test/resources/junit-platform.properties`
+- By default, scenarios run concurrently
+- Thread count is configurable via `junit.platform.execution.parallel.config.fixed.parallelism`
+
+**To customize parallel threads:**
+Edit `junit-platform.properties` and set:
+```properties
+junit.platform.execution.parallel.config.fixed.parallelism=4
 ```
+Or remove the `parallelism` property to use the number of CPU cores automatically.
 
-Override base URL:
+**To disable parallel execution:**
+Set `junit.platform.execution.parallel.enabled=false` in `junit-platform.properties`.
+
+### Override base URL
 
 ```bash
 mvn test -DbaseUrl=https://reqres.in
@@ -85,8 +99,12 @@ After a run:
 
 ## Configuration
 
-- `src/main/resources/config.properties`: baseUrl, basePath, apiKey, timeout.
-- Override at runtime: `mvn test -DbaseUrl=https://reqres.in`
+- **`src/main/resources/config.properties`**: baseUrl, basePath, apiKey, timeout.
+  - Override at runtime: `mvn test -DbaseUrl=https://reqres.in`
+
+- **`src/test/resources/junit-platform.properties`**: JUnit Platform parallel execution settings.
+  - Controls how many threads run scenarios concurrently
+  - Default: parallel execution enabled with configurable thread count
 
 ## Extending the framework
 

@@ -121,26 +121,4 @@
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>parallel</id>
-      <properties>
-        <parallel.forkCount>1</parallel.forkCount>
-      </properties>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven.surefire.plugin.version}</version>
-            <configuration>
-              <forkCount>${parallel.forkCount}</forkCount>
-              <reuseForks>true</reuseForks>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
 </project>
